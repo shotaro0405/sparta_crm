@@ -3,7 +3,13 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_prams)
+    #customer ID 取得
+
+    #user ID 取得
+
+    #body 取得 (コメント本文)
+
+    @comment = Comment.new(comment_params)
     @comment.save
     redirect_to customer_url(@comment.customer_id)
   end
@@ -16,10 +22,11 @@ class CommentsController < ApplicationController
   end
 
   private
-  def comment_prams
+  def comment_params
     params.require(:comment).permit(
       :body,
-      :customer_id
+      :customer_id,
+      :user_id
       )
   end
 end
