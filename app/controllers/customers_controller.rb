@@ -3,7 +3,6 @@ class CustomersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    # @customers = Customer.page(params[:page])
     @q = Customer.ransack(params[:q])
     @customers = @q.result.page(params[:page])
   end
@@ -22,11 +21,9 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    #@customer = Customer.find(params[:id])
   end
 
   def update
-    #@customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       redirect_to @customer
     else
@@ -35,12 +32,10 @@ class CustomersController < ApplicationController
   end
 
   def show
-    #@customer = Customer.find(params[:id])
     @comment = Comment.new
   end
 
   def destroy
-    #@customer = Customer.find(params[:id])
     @customer.destroy
     redirect_to customers_url
 
